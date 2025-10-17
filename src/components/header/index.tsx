@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div className="bg-primary flex justify-between items-center py-4 px-3">
-      <h1 className="text-white text-[32px]">UnyBay</h1>
+      <h1 className="text-white text-[32px] font-bold">Unybay</h1>
 
       <ul className="flex gap-5 items-center text-white">
         <li className="cursor-pointer">Home</li>
