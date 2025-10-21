@@ -1,13 +1,23 @@
-import UserTemplate from "./templates/user-template";
+import { createBrowserRouter, RouterProvider, } from "react-router-dom";
+import Home from "./pages/home";
 
 const App = () => {
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />
+    },
+  ]);
+
   return (
     <div>
-      <UserTemplate>
+      <RouterProvider router={router}/>
+      {/* <UserTemplate>
         Hello
-      </UserTemplate>
+      </UserTemplate> */}
     </div>
   )
-}
+};
 
 export default App;
