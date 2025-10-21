@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Home from "./pages/home";
 import ListProducts from "./pages/list-products";
 import Details from "./pages/details";
+import SearchProducts from "./pages/search-result";
+import NotFound from "./pages/not-found";
 
 const App = () => {
 
@@ -17,6 +19,18 @@ const App = () => {
     {
       path: "/products/details",
       element: <Details />
+    },
+    {
+      path: "/products/search",
+      element: <SearchProducts />
+    },
+    {
+      path: "/products/details",
+      element: <Details />
+    },
+    {
+      path: "*",
+      element: <NotFound />
     },
   ]);
 
