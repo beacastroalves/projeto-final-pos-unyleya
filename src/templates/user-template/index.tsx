@@ -13,7 +13,7 @@ const UserTemplate = (props: UserTemplateProps) => {
   return (
     <div className="min-h-screen flex flex-col select-none">
       <Header />
-      <div className="flex flex-col flex-1 p-4">{props.children}</div>
+      <div className="flex flex-col flex-1 p-4 w-full max-w-[1024px] justify-center self-center">{props.children}</div>
       <Footer />
     </div>
   )
