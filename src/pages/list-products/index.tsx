@@ -4,7 +4,7 @@ import UserTemplate from "../../templates/user-template";
 const ListProducts = () => {
   return (
     <UserTemplate>
-      <h1 className="mt-10">List Products</h1>
+      <h1 className="mt-10">Itens Recentes</h1>
 
       <div className="flex flex-wrap justify-center">
         {
