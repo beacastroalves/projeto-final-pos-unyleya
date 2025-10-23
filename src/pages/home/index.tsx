@@ -3,7 +3,7 @@ import UserTemplate from "../../templates/user-template";
 
 import { LuGamepad2 } from "react-icons/lu";
 import { AiOutlineCar, AiOutlineGift, AiOutlineSync } from "react-icons/ai";
-import { IoFastFoodOutline, IoShirtOutline } from "react-icons/io5";
+import { IoFastFoodOutline, IoSearch, IoShirtOutline } from "react-icons/io5";
 import { VscTools } from "react-icons/vsc";
 
 import { Carousel } from "react-responsive-carousel";
@@ -67,8 +67,14 @@ const Home = () => {
         </Carousel>
       </div>
 
+      <div className="flex justify-between items-center gap-2 rounded-md shadow-md p-3 px-6 bg-white border-2 border-gray-50">
+        <input type="text" className="w-full outline-none" placeholder="Estou buscando por..." />
+        <IoSearch className="text-[24px] text-gray-400"/>
+      </div>
+
       <h2 className="mt-12">Itens recentes</h2>
       <div className="flex flex-wrap">
+        <CardProduct />
         <CardProduct />
         <CardProduct />
         <CardProduct />
@@ -89,6 +95,7 @@ const Home = () => {
 
       <h2>Anúncios</h2>
       <div className="flex flex-wrap">
+        <CardProduct />
         <CardProduct />
         <CardProduct />
         <CardProduct />
