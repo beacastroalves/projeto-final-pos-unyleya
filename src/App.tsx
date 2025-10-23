@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Home from "./pages/home";
 import ListProducts from "./pages/list-products";
 import Details from "./pages/details";

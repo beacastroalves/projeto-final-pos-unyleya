@@ -6,6 +6,12 @@ import { AiOutlineCar, AiOutlineGift, AiOutlineSync } from "react-icons/ai";
 import { IoFastFoodOutline, IoShirtOutline } from "react-icons/io5";
 import { VscTools } from "react-icons/vsc";
 
+import { Carousel } from "react-responsive-carousel";
+
+import carousel1 from "../../assets/images/carousel1.jpg";
+import carousel2 from "../../assets/images/carousel2.jpg";
+import carousel3 from "../../assets/images/carousel3.jpg";
+
 const itemsCategory = [
   {
     id: 0,
@@ -47,13 +53,27 @@ const itemsCategory = [
 const Home = () => {
   return (
     <UserTemplate>
-      <h2>Itens recentes</h2>
+      <div className="mt-10 mb-10">
+        <Carousel showThumbs={false} autoPlay={true} emulateTouch={true} infiniteLoop={true}>
+          <div>
+            <img src={carousel1} alt="Imagem de algo 1" />
+          </div>
+          <div>
+            <img src={carousel2} alt="Imagem de algo 2" />
+          </div>
+          <div>
+            <img src={carousel3} alt="Imagem de algo 3" />
+          </div>
+        </Carousel>
+      </div>
+
+      <h2 className="mt-12">Itens recentes</h2>
       <div className="flex flex-wrap">
         <CardProduct />
         <CardProduct />
         <CardProduct />
       </div>
-      <p>Ver mais</p>
+      <p className="flex self-end">Ver mais</p>
 
       <div className="bg-primary px-8 py-4 pb-8 rounded-lg mt-10 mb-10 shadow-lg">
         <h2 className="text-white text-[24px] mb-6">Categorias</h2>
@@ -73,7 +93,7 @@ const Home = () => {
         <CardProduct />
         <CardProduct />
       </div>
-      <p>Ver mais</p>
+      <p className="flex self-end">Ver mais</p>
     </UserTemplate>
   )
 };
