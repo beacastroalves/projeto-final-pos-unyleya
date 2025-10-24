@@ -11,7 +11,7 @@ type UserTemplateProps = PropsWithChildren & {};
 
 const UserTemplate = (props: UserTemplateProps) => {
   return (
-    <div className="min-h-screen flex flex-col select-none">
+    <div className="min-h-screen flex flex-col select-none bg-gray-100">
       <Header />
       <div className="flex flex-col flex-1 p-4 w-full max-w-[1024px] self-center">{props.children}</div>
       <Footer />
