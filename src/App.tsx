@@ -7,7 +7,6 @@ import SearchProducts from "./pages/search-result";
 import NotFound from "./pages/not-found";
 
 const App = () => {
-
   const router = createBrowserRouter([
     {
       path: "/",
