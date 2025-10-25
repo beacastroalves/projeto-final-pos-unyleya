@@ -5,6 +5,7 @@ import ListProducts from "./pages/list-products";
 import Details from "./pages/details";
 import SearchProducts from "./pages/search-result";
 import NotFound from "./pages/not-found";
+import AboutUs from "./pages/about-us";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const App = () => {
     {
       path: "/products/details",
       element: <Details />
+    },
+    {
+      path: "/about-us",
+      element: <AboutUs />
     },
     {
       path: "*",
