@@ -11,6 +11,7 @@ import { Carousel } from "react-responsive-carousel";
 import carousel1 from "../../assets/images/carousel1.jpg";
 import carousel2 from "../../assets/images/carousel2.jpg";
 import carousel3 from "../../assets/images/carousel3.jpg";
+import { useNavigate } from "react-router-dom";
 
 const itemsCategory = [
   {
@@ -51,6 +52,9 @@ const itemsCategory = [
 ];
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
   return (
     <UserTemplate>
       <div className="mt-10 mb-10">
@@ -69,7 +73,9 @@ const Home = () => {
 
       <div className="flex justify-between items-center gap-2 rounded-md shadow-md p-3 px-6 bg-white border-2 border-gray-50">
         <input type="text" className="w-full outline-none" placeholder="Estou buscando por..." />
-        <IoSearch className="text-[24px] text-gray-400"/>
+        <button onClick={() => navigate('/products/search')} className="px-2 cursor-pointer py-1 transition duration-250 hover:brightness-70 active:brightness-40 active:translate-[1px]">
+          <IoSearch className="text-[24px] text-gray-400"/>
+        </button>
       </div>
 
       <h2 className="mt-12">Itens recentes</h2>
