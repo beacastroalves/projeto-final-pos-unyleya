@@ -1,19 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="bg-primary flex justify-between items-center py-4 px-3">
-      <h1 className="text-white text-[32px] font-bold">Unybay</h1>
+      <button onClick={() => navigate('/')} className="cursor-pointer">
+        <h1 className="text-white text-[32px] font-bold">Unybay</h1>
+      </button>
 
       <ul className="flex gap-5 items-center text-white">
-        <li className="cursor-pointer py-2 px-3 rounded-md transition duration-300 hover:bg-primary hover:brightness-115 active:brightness-110">
+        <li className="cursor-pointer py-2 px-3 rounded-md transition duration-300 hover:bg-primary hover:brightness-115 active:brightness-110 active:translate-[1px] active:drop-shadow-sm">
           <Link to="/">Home</Link>
         </li>
-        <li className="cursor-pointer py-2 px-3 rounded-md transition duration-300 hover:bg-primary hover:brightness-115 active:brightness-110 ">
-          <Link to="/" className="text-white">Quem Somos</Link>
+        <li className="cursor-pointer py-2 px-3 rounded-md transition duration-300 hover:bg-primary hover:brightness-115 active:brightness-110 active:translate-[1px] active:drop-shadow-sm">
+          <Link to="/about-us" className="text-white">Quem Somos</Link>
         </li>
         <li>
-          <button className="bg-secondary px-8 py-2 rounded-md cursor-pointer">Entrar</button>
+          <button className="bg-secondary px-8 py-2 rounded-md cursor-pointer transition duration-300 hover:drop-shadow-md hover:brightness-105 active:brightness-98 active:translate-[1px] active:drop-shadow-lg">Entrar</button>
         </li>
       </ul>
     </div>
