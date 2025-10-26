@@ -18,7 +18,7 @@ const Header = () => {
           <Link to="/about-us" className="text-white">Quem Somos</Link>
         </li>
         <li>
-          <button className="bg-secondary px-8 py-2 rounded-md cursor-pointer transition duration-300 hover:drop-shadow-md hover:brightness-105 active:brightness-98 active:translate-[1px] active:drop-shadow-lg">Entrar</button>
+          <button onClick={() => navigate('/login')} className="bg-secondary px-8 py-2 rounded-md cursor-pointer transition duration-300 hover:drop-shadow-md hover:brightness-105 active:brightness-98 active:translate-[1px] active:drop-shadow-lg">Entrar</button>
         </li>
       </ul>
     </div>
