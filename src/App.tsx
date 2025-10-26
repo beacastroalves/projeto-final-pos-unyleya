@@ -6,6 +6,7 @@ import Details from "./pages/details";
 import SearchProducts from "./pages/search-result";
 import NotFound from "./pages/not-found";
 import AboutUs from "./pages/about-us";
+import Login from "./pages/login";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const App = () => {
     {
       path: "/about-us",
       element: <AboutUs />
+    },
+    {
+      path: "/login",
+      element: <Login />
     },
     {
       path: "*",
