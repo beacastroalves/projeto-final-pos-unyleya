@@ -11,7 +11,7 @@ const AboutUs = () => {
           </h1>
           <div className="bg-white py-8 px-10 rounded-lg shadow-lg">
             <p className="text-gray-700 text-[18px] leading-7.5">
-              A <strong>Unybay</strong> nasceu de uma visão simples: criar um mercado online onde a conexão e a confiança fossem o centro de tudo. Desde o nosso início, em 2025, nos dedicamos a ser mais do que uma plataforma de vendas; somos uma comunidade que valoriza a diversidade de produtos e a experiência do cliente. Acreditamos que encontrar o produto certo deve ser fácil, seguro e inspirador.
+              A <span className="font-bold text-primary">Unybay</span> nasceu de uma visão simples: criar um mercado online onde a conexão e a confiança fossem o centro de tudo. Desde o nosso início, em 2025, nos dedicamos a ser mais do que uma plataforma de vendas; somos uma comunidade que valoriza a diversidade de produtos e a experiência do cliente. Acreditamos que encontrar o produto certo deve ser fácil, seguro e inspirador.
             </p>
             <p className="text-gray-700 text-[18px] leading-7.5 mt-4 italic w-full text-right">
               "Conectando paixões, entregando valor."

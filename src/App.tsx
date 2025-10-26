@@ -7,6 +7,7 @@ import SearchProducts from "./pages/search-result";
 import NotFound from "./pages/not-found";
 import AboutUs from "./pages/about-us";
 import Login from "./pages/login";
+import Register from "./pages/register";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -37,6 +38,10 @@ const App = () => {
     {
       path: "/login",
       element: <Login />
+    },
+    {
+      path: "/register",
+      element: <Register />
     },
     {
       path: "*",
