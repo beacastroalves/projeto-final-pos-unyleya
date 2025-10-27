@@ -11,10 +11,10 @@ const Header = () => {
       </button>
 
       <ul className="flex gap-5 items-center text-white">
-        <li className="cursor-pointer py-2 px-3 rounded-md transition duration-300 hover:bg-primary hover:brightness-115 active:brightness-110 active:translate-[1px] active:drop-shadow-sm">
+        <li className="cursor-pointer py-2 px-3 rounded-md transition duration-300 hover:bg-primary-300 active:bg-primary-600 active:translate-[1px] active:drop-shadow-sm">
           <Link to="/">Home</Link>
         </li>
-        <li className="cursor-pointer py-2 px-3 rounded-md transition duration-300 hover:bg-primary hover:brightness-115 active:brightness-110 active:translate-[1px] active:drop-shadow-sm">
+        <li className="cursor-pointer py-2 px-3 rounded-md transition duration-300 hover:bg-primary-300 active:bg-primary-600  active:translate-[1px] active:drop-shadow-sm">
           <Link to="/about-us" className="text-white">Quem Somos</Link>
         </li>
         <li>

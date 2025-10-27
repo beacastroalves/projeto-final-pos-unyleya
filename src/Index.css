@@ -4,6 +4,9 @@
 
 @theme {
   --color-primary: #0060B1;
+  --color-primary-300: #005092;
+  --color-primary-600: #004781;
+  --color-primary-900: #003058;
   --color-secondary: #FF6500;
   --font-ubuntu: Ubuntu, sans-serif;
 }

@@ -6,7 +6,7 @@ const AboutUs = () => {
     <UserTemplate>
       <div className="flex flex-col gap-16 py-10">
         <section>
-          <h1 className="text-[36px] font-bold text-center text-primary brightness-60 mb-8">
+          <h1 className="text-[36px] font-bold text-center text-primary-600 mb-8">
             Nossa História e Missão
           </h1>
           <div className="bg-white py-8 px-10 rounded-lg shadow-lg">
@@ -20,13 +20,13 @@ const AboutUs = () => {
         </section>
 
         <section className="py-4">
-          <h2 className="text-[32px] font-medium text-center text-primary brightness-60 mb-8">
+          <h2 className="text-[32px] font-medium text-center text-primary-600 mb-8">
             Nossos Valores Fundamentais
           </h2>
           <div className="flex flex-row gap-8">
             <div className="bg-primary/10 p-6 rounded-lg shadow-md flex-1 flex flex-col items-center text-center transition duration-300 hover:bg-primary/12">
               <HiOutlineLightBulb className="text-[48px] text-primary mb-3" />
-              <h3 className="text-[20px] font-bold text-primary transition brightness-40 mb-2">Inovação Contínua</h3>
+              <h3 className="text-[20px] font-bold text-primary-900 transition mb-2">Inovação Contínua</h3>
               <p className="text-gray-600">
                 Estamos sempre buscando novas maneiras de melhorar a sua experiência, desde a navegação até o checkout.
               </p>
@@ -34,7 +34,7 @@ const AboutUs = () => {
 
             <div className="bg-primary/10 p-6 rounded-lg shadow-md flex-1 flex flex-col items-center text-center transition duration-300 hover:bg-primary/12">
               <HiOutlineHeart className="text-[48px] text-primary mb-3" />
-              <h3 className="text-[20px] font-bold text-primary transition brightness-40 mb-2">Comunidade e Confiança</h3>
+              <h3 className="text-[20px] font-bold text-primary-900 transition mb-2">Comunidade e Confiança</h3>
               <p className="text-gray-600">
                 Construímos um ambiente seguro, onde vendedores e compradores interagem com transparência e respeito mútuo.
               </p>
@@ -42,7 +42,7 @@ const AboutUs = () => {
 
             <div className="bg-primary/10 p-6 rounded-lg shadow-md flex-1 flex flex-col items-center text-center transition duration-300 hover:bg-primary/12">
               <HiOutlineGlobeAlt className="text-[48px] text-primary mb-3" />
-              <h3 className="text-[20px] font-bold text-primary transition brightness-40 mb-2">Ampla Variedade</h3>
+              <h3 className="text-[20px] font-bold text-primary-900 transition mb-2">Ampla Variedade</h3>
               <p className="text-gray-600">
                 Da ferramenta especializada ao presente exclusivo, oferecemos um catálogo vasto para atender a todas as suas necessidades.
               </p>
