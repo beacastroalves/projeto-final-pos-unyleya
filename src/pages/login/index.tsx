@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import AuthTemplate from "../../templates/auth-template";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
 type LoginForm = {
   email: string;
@@ -19,6 +20,8 @@ const schemaValidation = Yup.object().shape({
 
 const Login = () => {
 
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -31,7 +34,7 @@ const Login = () => {
 
   return (
     <AuthTemplate>
-      <div className="bg-white py-8 px-10 rounded-lg shadow-lg w-[400px] flex flex-col gap-4 self-center">
+      <div className="bg-white py-8 px-20 rounded-lg shadow-lg w-[500px] flex flex-col gap-4 self-center">
         <h1 className="font-bold text-primary text-[24px] text-center">Unybay</h1>
         <p className="text-gray-600 text-[14px] text-center mb-6">Acesse a sua conta</p>
         <form
@@ -42,7 +45,7 @@ const Login = () => {
             <input
               {...register('email')}
               className="border-2 border-gray-200 rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
-              type="text"
+              type="email"
               placeholder="E-mail"
             />
             { errors.email && (
@@ -62,9 +65,9 @@ const Login = () => {
             )}
           </div>
 
-          <button className="border-2 border-primary bg-primary text-white rounded-lg py-2 px-4 mt-4 cursor-pointer transition duration-200 hover:bg-primary-300 active:bg-primary-600 active:translate-[1px]" type="submit">Entrar</button>
+          <button className="border-2 border-primary bg-primary text-white rounded-lg py-2 px-4 my-4 cursor-pointer transition duration-200 hover:bg-primary-300 active:bg-primary-600 active:translate-[1px]" type="submit">Entrar</button>
+          <button onClick={() => navigate('/register')} className="text-gray-400 text-[14px] cursor-pointer hover:text-gray-600">Cadastre-se</button>
         </form>
-          <button className="text-gray-400 text-[14px] cursor-pointer hover:text-gray-600">Cadastre-se</button>
       </div>
     </AuthTemplate>
   )
