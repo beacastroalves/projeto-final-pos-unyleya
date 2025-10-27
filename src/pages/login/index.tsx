@@ -1,10 +1,21 @@
 import { useForm } from "react-hook-form";
 import AuthTemplate from "../../templates/auth-template";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 type LoginForm = {
   email: string;
   password: string;
 }
+
+const schemaValidation = Yup.object().shape({
+  email: Yup.string()
+    .email("Digite um e-mail válido")
+    .required("Campo obrigatório"),
+  password: Yup.string()
+    .required("Campo obrigatório")
+    .min(4, "Mínimo de 4 caracteres")
+});
 
 const Login = () => {
 
@@ -12,7 +23,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<LoginForm>();
+  } = useForm<LoginForm>({ resolver: yupResolver(schemaValidation) });
 
   const logar = (values: LoginForm) => {
     console.log(values);
@@ -29,25 +40,25 @@ const Login = () => {
         >
           <div className="flex flex-col flex-1 min-h-[70px] h-[70px]">
             <input
-              {...register('email', { required: true })}
+              {...register('email')}
               className="border-2 border-gray-200 rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
               type="text"
               placeholder="E-mail"
             />
             { errors.email && (
-              <span className="text-red-700 text-[12px] ml-2">Campo obrigatório</span>
+              <span className="text-red-700 text-[12px] ml-2">{ errors.email.message }</span>
             )}
           </div>
 
           <div className="flex flex-col flex-1 min-h-[70px] h-[70px]">
             <input
-              {...register('password', { required: true })}
+              {...register('password')}
               className="border-2 border-gray-200 rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
               type="password"
               placeholder="Senha"
             />
             { errors.password && (
-              <span className="text-red-700 text-[12px] ml-2">Campo obrigatório</span>
+              <span className="text-red-700 text-[12px] ml-2">{ errors.password.message}</span>
             )}
           </div>
 
