@@ -16,7 +16,7 @@ const AuthTemplate = (props: AuthTemplateProps) => {
         </button>
       </div>
 
-      <div className="flex flex-col flex-1 p-4 w-full max-w-[1024px] self-center">
+      <div className="flex flex-col flex-1 p-4 w-full max-w-[1024px] self-center justify-center">
         {props.children}
       </div>
 
