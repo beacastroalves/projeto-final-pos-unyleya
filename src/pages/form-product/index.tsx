@@ -118,12 +118,19 @@ const FormProduct = () => {
           <div className="flex-1 w-full min-h-[70px] h-[350px] ">
             <textarea className="outline-gray-300 w-full min-h-[100%] border-2 border-gray-200 rounded-lg p-4 shadow-sm" ></textarea>
           </div>
-          <button
-            className="bg-primary text-white w-full border-2 border-primary rounded-lg py-2 px-4 mt-8 mb-4 cursor-pointer transition duration-200 hover:bg-primary-300 active:bg-primary-600 active:translate-[1px]"
-            type="submit"
-          >
-            Salvar
-          </button>
+          <div className="flex gap-4 justify-end">
+            <button
+              className="w-[120px] bg-primary text-white border-2 border-primary rounded-lg py-2 px-4 mt-8 mb-4 cursor-pointer transition duration-200 hover:bg-primary-300 active:bg-primary-600 active:translate-[1px]"
+              type="submit"
+            >
+              Salvar
+            </button>
+            <button
+              className="w-[120px] text-primary border-2 border-primary rounded-lg  py-2 px-4 mt-8 mb-4 cursor-pointer transition duration-300 hover:bg-primary/10 active:bg-primary/20 active:translate-[1px]"
+            >
+              Cancelar
+            </button>
+          </div>
         </form>
       </div>
     </AdminTemplate>
