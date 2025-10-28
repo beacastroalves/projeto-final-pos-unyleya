@@ -8,9 +8,12 @@ const Footer = () => {
 
   return (
     <footer className="text-white bg-primary p-10">
-      <button onClick={() => navigate('/')} className="cursor-pointer transition duration-200 hover:text-shadow-lg">
-        <h2 className="text-[22px] font-bold mb-5">Unybay</h2>
-      </button>
+      <div className="flex justify-between items-center">
+        <button onClick={() => navigate('/')} className="cursor-pointer transition duration-200 hover:text-shadow-lg">
+          <h2 className="text-[22px] font-bold mb-5">Unybay</h2>
+        </button>
+        <button onClick={() => navigate('/contact-us')} className="cursor-pointer py-2 px-3 rounded-md border-b-2 border-t-2 border-transparent hover:border-white/50 hover:shadow-lg active:translate-[1px] active:drop-shadow-lg active:shadow-lg">Fale Concosco</button>
+      </div>
 
       <p className="text-center">Unyleya Educacional | Todos os direitos reservados </p>
       <div className="flex justify-center gap-3 mt-5">

@@ -11,6 +11,7 @@ import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
 import UserProducts from "./pages/user-products";
 import FormProduct from "./pages/form-product";
+import ContactUs from "./pages/contact-us";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const App = () => {
     {
       path: "/register",
       element: <Register />
+    },
+    {
+      path: "/contact-us",
+      element: <ContactUs />
     },
     {
       path: "/dashboard",
