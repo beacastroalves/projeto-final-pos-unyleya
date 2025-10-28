@@ -8,5 +8,8 @@
   --color-primary-600: #004781;
   --color-primary-900: #003058;
   --color-secondary: #FF6500;
+  --color-secondary-300: #DF5900;
+  --color-secondary-600: #C14D00;
+  --color-secondary-900: #A54200;
   --font-ubuntu: Ubuntu, sans-serif;
 }

@@ -3,7 +3,6 @@ import AuthTemplate from "../../templates/auth-template";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import { useNavigate } from "react-router-dom";
 
 type RegisterForm = {
   name: string;
@@ -12,7 +11,7 @@ type RegisterForm = {
   city: string;
   state: string;
   password: string;
-}
+};
 
 const schemaValidation = Yup.object().shape({
   name: Yup.string().required("Campo obrigatório"),
