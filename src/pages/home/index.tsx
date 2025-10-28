@@ -79,7 +79,7 @@ const Home = () => {
       </div>
 
       <h2 className="mt-12">Itens recentes</h2>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-between">
         <CardProduct />
         <CardProduct />
         <CardProduct />
@@ -100,7 +100,7 @@ const Home = () => {
       </div>
 
       <h2>Anúncios</h2>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-between">
         <CardProduct />
         <CardProduct />
         <CardProduct />
