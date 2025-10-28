@@ -8,6 +8,7 @@ import NotFound from "./pages/not-found";
 import AboutUs from "./pages/about-us";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import Dashboard from "./pages/dashboard";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const App = () => {
     {
       path: "/register",
       element: <Register />
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />
     },
     {
       path: "*",
