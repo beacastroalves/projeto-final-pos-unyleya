@@ -10,6 +10,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
 import UserProducts from "./pages/user-products";
+import FormProduct from "./pages/form-product";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const App = () => {
     {
       path: "/my-products",
       element: <UserProducts />
+    },
+    {
+      path: "/form-product",
+      element: <FormProduct />
     },
     {
       path: "*",
