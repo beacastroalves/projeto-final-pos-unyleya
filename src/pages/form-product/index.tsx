@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 type FormProduct = {
   name: string;
-  brand: string;
+  manufacturer: string;
   category: string;
   price: number;
   url1: string;
@@ -16,7 +16,7 @@ type FormProduct = {
 
 const schemaValidation = Yup.object().shape({
   name: Yup.string().required("Campo obrigatório"),
-  brand: Yup.string().required("Campo obrigatório"),
+  manufacturer: Yup.string().required("Campo obrigatório"),
   category: Yup.string().required("Campo obrigatório"),
   price: Yup.number().required("Campo obrigatório"),
   url1: Yup.string().required("Campo obrigatório"),
@@ -52,12 +52,12 @@ const FormProduct = () => {
 
             <div className="flex-1 w-full min-h-[70px] h-[70px]">
               <input
-                {...register("brand")}
+                {...register("manufacturer")}
                 className="border-2 border-gray-200 w-full rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
                 placeholder="Fabricante"
               />
-              { errors.brand && (
-                <span className="text-red-700 text-[12px] ml-2">{ errors.brand.message }</span>
+              { errors.manufacturer && (
+                <span className="text-red-700 text-[12px] ml-2">{ errors.manufacturer.message }</span>
               )}
             </div>
           </div>

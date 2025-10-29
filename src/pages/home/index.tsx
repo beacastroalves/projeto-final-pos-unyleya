@@ -12,6 +12,9 @@ import carousel1 from "../../assets/images/carousel1.jpg";
 import carousel2 from "../../assets/images/carousel2.jpg";
 import carousel3 from "../../assets/images/carousel3.jpg";
 import { useNavigate } from "react-router-dom";
+import { getApiRecentsProducts } from "./services";
+import { useState, useEffect } from "react";
+import type { Product } from "./types";
 
 const itemsCategory = [
   {
@@ -55,6 +58,22 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const [ recentsProducts, setRecentsProducts ] = useState<Product[]>([]);
+
+  const getRecentsProducts = async () => {
+    try {
+      const response = await getApiRecentsProducts();
+
+      setRecentsProducts(response.data);
+    } catch (error) {
+      alert(`Houve um erro ao buscar produtos recentes // ${error}`);
+    }
+  }
+
+  useEffect(() =>{
+    getRecentsProducts();
+  }, []);
+
   return (
     <UserTemplate>
       <div className="mt-10 mb-10">
@@ -80,18 +99,22 @@ const Home = () => {
 
       <h2 className="mt-12">Itens recentes</h2>
       <div className="flex flex-wrap justify-between">
+        {
+          recentsProducts.map((product) => (
+            <CardProduct key={product._id} />
+          ))}
+        {/* <CardProduct />
         <CardProduct />
         <CardProduct />
-        <CardProduct />
-        <CardProduct />
+        <CardProduct /> */}
       </div>
       <p className="flex self-end">Ver mais</p>
 
       <div className="bg-primary px-8 py-4 pb-8 rounded-lg mt-10 mb-10 shadow-lg">
         <h2 className="text-white text-[24px] mb-6">Categorias</h2>
         <div className="flex justify-around">
-          {itemsCategory.map((category) => (
-            <div className="flex flex-col  items-center cursor-pointer">
+          {itemsCategory.map((category, index) => (
+            <div key={index} className="flex flex-col  items-center cursor-pointer">
               <div className="bg-white w-[64px] h-[64px] rounded-full flex justify-center items-center text-[28px] mb-2">{category.icon}</div>
               <span className="text-white">{category.title}</span>
             </div>
