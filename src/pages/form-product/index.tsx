@@ -3,6 +3,7 @@ import AdminTemplate from "../../templates/admin-template";
 
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
 type FormProduct = {
   name: string;
@@ -23,6 +24,8 @@ const schemaValidation = Yup.object().shape({
 });
 
 const FormProduct = () => {
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -126,6 +129,7 @@ const FormProduct = () => {
               Salvar
             </button>
             <button
+              onClick={() => navigate('/my-products')}
               className="w-[120px] text-primary border-2 border-primary rounded-lg  py-2 px-4 mt-8 mb-4 cursor-pointer transition duration-300 hover:bg-primary/10 active:bg-primary/20 active:translate-[1px]"
             >
               Cancelar

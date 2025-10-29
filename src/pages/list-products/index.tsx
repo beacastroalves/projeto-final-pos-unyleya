@@ -6,7 +6,7 @@ const ListProducts = () => {
     <UserTemplate>
       <h1 className="mt-10">Itens Recentes</h1>
 
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap">
         {
           Array.from({ length: 14 }).map(() => (
             <CardProduct />

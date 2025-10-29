@@ -11,14 +11,29 @@ const HeaderAdmin = () => {
       </button>
 
       <ul className="flex gap-5 items-center text-white">
-        <li className="cursor-pointer py-2 px-3 rounded-md border-b-2 border-t-2 border-transparent hover:border-white/50 hover:shadow-lg active:translate-[1px] active:drop-shadow-lg active:shadow-lg">
-          <Link to="/">Home</Link>
+        <li>
+          <Link
+            to="/"
+            className="cursor-pointer py-2 px-3 rounded-md border-b-2 border-t-2 border-transparent hover:border-white/50 hover:shadow-lg active:translate-[1px] active:drop-shadow-lg active:shadow-lg"
+          >
+            Home
+          </Link>
         </li>
-        <li className="cursor-pointer py-2 px-3 rounded-md border-b-2 border-t-2 border-transparent hover:border-white/50 hover:shadow-lg active:translate-[1px] active:drop-shadow-lg active:shadow-lg">
-          <Link to="/about-us" className="text-white">Quem Somos</Link>
+        <li>
+          <Link
+            to="/about-us"
+            className="cursor-pointer py-2 px-3 rounded-md border-b-2 border-t-2 border-transparent hover:border-white/50 hover:shadow-lg active:translate-[1px] active:drop-shadow-lg active:shadow-lg"
+          >
+            Quem Somos
+          </Link>
         </li>
-        <li className="cursor-pointer py-2 px-3 rounded-md border-b-2 border-t-2 border-transparent hover:border-white/50 hover:shadow-lg active:translate-[1px] active:drop-shadow-lg active:shadow-lg">
-          <Link to="/" className="text-white">Sair</Link>
+        <li>
+          <Link
+            to="/"
+            className="cursor-pointer py-2 px-3 rounded-md border-b-2 border-t-2 border-transparent hover:border-white/50 hover:shadow-lg active:translate-[1px] active:drop-shadow-lg active:shadow-lg"
+          >
+            Sair
+          </Link>
         </li>
         <li>
           <button

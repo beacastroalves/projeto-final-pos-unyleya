@@ -1,12 +1,18 @@
-import type { PropsWithChildren } from "react"
+import { useEffect, type PropsWithChildren } from "react"
 import Footer from "../../components/footer";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type AuthTemplateProps = PropsWithChildren & {};
 
 const AuthTemplate = (props: AuthTemplateProps) => {
 
   const navigate = useNavigate();
+
+  const { pathname } = useLocation();
+
+  useEffect(()=> {
+    window.scrollTo(0, 0)
+  },[pathname]);
 
   return (
     <div className="min-h-screen flex flex-col select-none bg-gray-100">
