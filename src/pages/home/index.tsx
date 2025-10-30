@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { getApiRecentsProducts, getApiRecommendedsProducts } from "./services";
 import { useState, useEffect } from "react";
 import type { Product } from "./types";
+import ListLoading from "../../components/list-loading";
 
 const itemsCategory = [
   {
@@ -58,10 +59,14 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  const [ recentsProducts, setRecentsProducts ] = useState<Product[]>([]);
-  const [ recommendedsProducts, setRecommendedsProducts ] = useState<Product[]>([]);
+  const [recentsProducts, setRecentsProducts] = useState<Product[]>([]);
+  const [recommendedsProducts, setRecommendedsProducts] = useState<Product[]>([]);
+
+  const [isLoadingRecentsProducts, setIsLoadingRecentsProducts] = useState(false);
+  const [isLoadingRecommendedsProducts, setIsLoadingRecommendedsProducts] = useState(false);
 
   const getRecentsProducts = async () => {
+    setIsLoadingRecentsProducts(true);
     try {
       const response = await getApiRecentsProducts();
 
@@ -69,15 +74,18 @@ const Home = () => {
     } catch (error) {
       alert(`Houve um erro ao buscar produtos recentes // ${error}`);
     }
+    setIsLoadingRecentsProducts(false);
   };
 
   const getRecommendedsProducts = async () => {
+    setIsLoadingRecommendedsProducts(true);
     try {
       const response = await getApiRecommendedsProducts();
       setRecommendedsProducts(response.data.slice(0, 4));
     } catch (error) {
       alert(`Houve um erro ao buscar produtos recomendados // ${error}`);
     }
+    setIsLoadingRecommendedsProducts(false);
   };
 
   useEffect(() =>{
@@ -112,6 +120,7 @@ const Home = () => {
       </div>
 
       <h2 className="mt-12">Itens recentes</h2>
+      { isLoadingRecentsProducts && <ListLoading /> }
       <div className="flex flex-wrap justify-between">
         {
           recentsProducts.map((product) => (
@@ -139,6 +148,7 @@ const Home = () => {
       </div>
 
       <h2>Anúncios</h2>
+      { isLoadingRecommendedsProducts && <ListLoading /> }
       <div className="flex flex-wrap justify-between">
         {
           recommendedsProducts.map((product) => (
