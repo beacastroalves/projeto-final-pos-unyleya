@@ -11,7 +11,7 @@ import { Carousel } from "react-responsive-carousel";
 import carousel1 from "../../assets/images/carousel1.jpg";
 import carousel2 from "../../assets/images/carousel2.jpg";
 import carousel3 from "../../assets/images/carousel3.jpg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getApiRecentsProducts, getApiRecommendedsProducts } from "./services";
 import { useState, useEffect } from "react";
 import type { Product } from "./types";
@@ -119,7 +119,7 @@ const Home = () => {
         </button>
       </div>
 
-      <h2 className="mt-12">Itens recentes</h2>
+      <h2 className="mt-12 text-gray-700">Itens recentes</h2>
       { isLoadingRecentsProducts && <ListLoading /> }
       <div className="flex flex-wrap justify-between">
         {
@@ -133,7 +133,9 @@ const Home = () => {
             />
           ))}
       </div>
-      <p className="flex self-end">Ver mais</p>
+      <Link to="/all-recents-products" className="flex text-gray-700 self-end cursor-pointer p-1 border-b-1 border-transparent hover:border-gray-700">
+        <p >Ver todos os produtos recentes</p>
+      </Link>
 
       <div className="bg-primary px-8 py-4 pb-8 rounded-lg mt-10 mb-10 shadow-lg">
         <h2 className="text-white text-[24px] mb-6">Categorias</h2>
@@ -147,7 +149,7 @@ const Home = () => {
         </div>
       </div>
 
-      <h2>Anúncios</h2>
+      <h2 className="text-gray-700">Anúncios</h2>
       { isLoadingRecommendedsProducts && <ListLoading /> }
       <div className="flex flex-wrap justify-between">
         {
@@ -162,7 +164,7 @@ const Home = () => {
           ))
         }
       </div>
-      <p className="flex self-end">Ver mais</p>
+      <button className="flex text-gray-700 self-end cursor-pointer border-b-1 border-transparent hover:border-gray-700">Ver todos os produtos recomendados</button>
     </UserTemplate>
   )
 };

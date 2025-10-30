@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Home from "./pages/home";
-import ListProducts from "./pages/list-products";
+import ListRecentsProducts from "./pages/list-recents-products";
 import Details from "./pages/details";
 import SearchProducts from "./pages/search-result";
 import NotFound from "./pages/not-found";
@@ -20,8 +20,8 @@ const App = () => {
       element: <Home />
     },
     {
-      path: "/products",
-      element: <ListProducts />
+      path: "/all-recents-products",
+      element: <ListRecentsProducts />
     },
     {
       path: "/products/details",
