@@ -64,11 +64,12 @@ const Home = () => {
     try {
       const response = await getApiRecentsProducts();
 
-      setRecentsProducts(response.data);
+      setRecentsProducts(response.data.slice(0, 4));
     } catch (error) {
       alert(`Houve um erro ao buscar produtos recentes // ${error}`);
     }
-  }
+  };
+
 
   useEffect(() =>{
     getRecentsProducts();
@@ -101,7 +102,13 @@ const Home = () => {
       <div className="flex flex-wrap justify-between">
         {
           recentsProducts.map((product) => (
-            <CardProduct key={product._id} />
+            <CardProduct
+              key={product._id}
+              name={product.name}
+              img={product.url1}
+              manufacturer={product.manufacturer}
+              price={product.price}
+            />
           ))}
         {/* <CardProduct />
         <CardProduct />
@@ -124,10 +131,10 @@ const Home = () => {
 
       <h2>Anúncios</h2>
       <div className="flex flex-wrap justify-between">
+        {/* <CardProduct />
         <CardProduct />
         <CardProduct />
-        <CardProduct />
-        <CardProduct />
+        <CardProduct /> */}
       </div>
       <p className="flex self-end">Ver mais</p>
     </UserTemplate>
