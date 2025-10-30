@@ -12,7 +12,7 @@ import carousel1 from "../../assets/images/carousel1.jpg";
 import carousel2 from "../../assets/images/carousel2.jpg";
 import carousel3 from "../../assets/images/carousel3.jpg";
 import { useNavigate } from "react-router-dom";
-import { getApiRecentsProducts } from "./services";
+import { getApiRecentsProducts, getApiRecommendedsProducts } from "./services";
 import { useState, useEffect } from "react";
 import type { Product } from "./types";
 
@@ -59,6 +59,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [ recentsProducts, setRecentsProducts ] = useState<Product[]>([]);
+  const [ recommendedsProducts, setRecommendedsProducts ] = useState<Product[]>([]);
 
   const getRecentsProducts = async () => {
     try {
@@ -70,9 +71,21 @@ const Home = () => {
     }
   };
 
+  const getRecommendedsProducts = async () => {
+    try {
+      const response = await getApiRecommendedsProducts();
+      setRecommendedsProducts(response.data.slice(0, 4));
+    } catch (error) {
+      alert(`Houve um erro ao buscar produtos recomendados // ${error}`);
+    }
+  };
 
   useEffect(() =>{
     getRecentsProducts();
+  }, []);
+
+  useEffect(() =>{
+    getRecommendedsProducts();
   }, []);
 
   return (
@@ -110,10 +123,6 @@ const Home = () => {
               price={product.price}
             />
           ))}
-        {/* <CardProduct />
-        <CardProduct />
-        <CardProduct />
-        <CardProduct /> */}
       </div>
       <p className="flex self-end">Ver mais</p>
 
@@ -131,10 +140,17 @@ const Home = () => {
 
       <h2>Anúncios</h2>
       <div className="flex flex-wrap justify-between">
-        {/* <CardProduct />
-        <CardProduct />
-        <CardProduct />
-        <CardProduct /> */}
+        {
+          recommendedsProducts.map((product) => (
+            <CardProduct
+              key={product._id}
+              name={product.name}
+              manufacturer={product.manufacturer}
+              img={product.url1}
+              price={product.price}
+            />
+          ))
+        }
       </div>
       <p className="flex self-end">Ver mais</p>
     </UserTemplate>
