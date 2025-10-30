@@ -12,6 +12,7 @@ import Dashboard from "./pages/dashboard";
 import UserProducts from "./pages/user-products";
 import FormProduct from "./pages/form-product";
 import ContactUs from "./pages/contact-us";
+import ListAllProducts from "./pages/list-all-products";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const App = () => {
     {
       path: "/all-recents-products",
       element: <ListRecentsProducts />
+    },
+    {
+      path: "/all-products",
+      element: <ListAllProducts />
     },
     {
       path: "/products/details",

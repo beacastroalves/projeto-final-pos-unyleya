@@ -121,7 +121,7 @@ const Home = () => {
 
       <h2 className="mt-12 text-gray-700">Itens recentes</h2>
       { isLoadingRecentsProducts && <ListLoading /> }
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap">
         {
           recentsProducts.map((product) => (
             <CardProduct
@@ -134,7 +134,7 @@ const Home = () => {
           ))}
       </div>
       <Link to="/all-recents-products" className="flex text-gray-700 self-end cursor-pointer p-1 border-b-1 border-transparent hover:border-gray-700">
-        <p >Ver todos os produtos recentes</p>
+        <p>Ver todos os produtos recentes</p>
       </Link>
 
       <div className="bg-primary px-8 py-4 pb-8 rounded-lg mt-10 mb-10 shadow-lg">
@@ -151,7 +151,7 @@ const Home = () => {
 
       <h2 className="text-gray-700">Anúncios</h2>
       { isLoadingRecommendedsProducts && <ListLoading /> }
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap">
         {
           recommendedsProducts.map((product) => (
             <CardProduct
@@ -164,7 +164,9 @@ const Home = () => {
           ))
         }
       </div>
-      <button className="flex text-gray-700 self-end cursor-pointer border-b-1 border-transparent hover:border-gray-700">Ver todos os produtos recomendados</button>
+      <Link to="/all-products" className="flex text-gray-700 self-end cursor-pointer p-1 border-b-1 border-transparent hover:border-gray-700">
+        <p>Ver todos os produtos</p>
+      </Link>
     </UserTemplate>
   )
 };
