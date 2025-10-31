@@ -11,7 +11,7 @@ type ContactUsForm = {
 };
 
 const schemaValidation = Yup.object().shape({
-  name: Yup.string().required("Campo obrigatório").min(8, "Mínimo de 10 caracteres"),
+  name: Yup.string().required("Campo obrigatório").min(8, "Mínimo de 8 caracteres"),
   email: Yup.string()
     .required("Campo obrigatório")
     .email("Digite um e-mail válido"),
