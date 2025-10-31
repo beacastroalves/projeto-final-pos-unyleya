@@ -33,7 +33,7 @@ const App = () => {
       element: <Details />
     },
     {
-      path: "/products/search",
+      path: "/products/search/:product",
       element: <SearchProducts />
     },
     {

@@ -59,6 +59,8 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const [inputSearch, setInputSearch ] = useState("");
+
   const [recentsProducts, setRecentsProducts] = useState<Product[]>([]);
   const [recommendedsProducts, setRecommendedsProducts] = useState<Product[]>([]);
 
@@ -75,6 +77,16 @@ const Home = () => {
       alert(`Houve um erro ao buscar produtos recentes // ${error}`);
     }
     setIsLoadingRecentsProducts(false);
+  };
+
+  const navigateSearch = () => {
+    navigate(`/products/search/${inputSearch}`);
+  };
+
+  const handleSearchOnEnter = (event:React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      navigateSearch();
+    }
   };
 
   const getRecommendedsProducts = async () => {
@@ -113,8 +125,14 @@ const Home = () => {
       </div>
 
       <div className="flex justify-between items-center gap-2 rounded-md shadow-md p-3 px-6 bg-white border-2 border-gray-50">
-        <input type="text" className="w-full outline-none" placeholder="Estou buscando por..." />
-        <button onClick={() => navigate('/products/search')} className="px-2 cursor-pointer py-1 transition duration-250 hover:brightness-70 active:brightness-40 active:translate-[1px]">
+        <input
+          type="text"
+          className="w-full outline-none"
+          placeholder="Estou buscando por..."
+          onChange={(event) => setInputSearch(event.target.value)}
+          onKeyDown={handleSearchOnEnter}
+        />
+        <button onClick={navigateSearch} className="px-2 cursor-pointer py-1 transition duration-250 hover:brightness-70 active:brightness-40 active:translate-[1px]">
           <IoSearch className="text-[24px] text-gray-400"/>
         </button>
       </div>
