@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CardProduct from "../../components/card-product";
 import UserTemplate from "../../templates/user-template";
 import { getApiProductsByNames } from "./services";
@@ -32,7 +32,7 @@ const SearchProducts = () => {
 
   return (
     <UserTemplate>
-      <h1 className="mt-10 m-4 text-[20px]">Resultado da busca</h1>
+      <h1 className="mt-10 m-4 text-[24px]">Resultado da busca</h1>
 
       { isLoadingProducts && <ListLoading /> }
       <div className="flex flex-wrap">
@@ -48,8 +48,12 @@ const SearchProducts = () => {
           ))
         }
       </div>
-
-      <p className="self-end m-4">{allProducts.length > 1 ? `${allProducts.length} itens` : `${allProducts.length} item`}</p>
+      <div className="flex items-center justify-between mx-4">
+        <Link to="/all-products" className="flex text-gray-700 cursor-pointer p-1 border-b-1 border-transparent hover:border-gray-700">
+          <p>Voltar para todos os produtos</p>
+        </Link>
+        <p className="self-end m-4">{allProducts.length > 1 ? `${allProducts.length} itens` : `${allProducts.length} item`}</p>
+      </div>
     </UserTemplate>
   )
 };
