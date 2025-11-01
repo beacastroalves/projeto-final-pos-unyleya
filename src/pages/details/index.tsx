@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getApiProductsById } from "./services";
 import { useEffect, useState } from "react";
 import type { Product } from "./types";
+import DetailsLoading from "../../components/details-loading";
 
 const Details = () => {
   const params = useParams();
@@ -11,7 +12,10 @@ const Details = () => {
 
   const [product, setProduct] = useState<Product>({} as Product);
 
+  const [isLoadingDetailsProducts, setIsLoadingDetailsProducts] = useState(false);
+
   const getDetailsProduct = async () => {
+    setIsLoadingDetailsProducts(true);
     try {
       const response = await getApiProductsById(id ?? "");
 
@@ -21,6 +25,19 @@ const Details = () => {
     } catch (error) {
       alert(`Erro ao buscar dados do produto | ${error}`);
     }
+    setIsLoadingDetailsProducts(false);
+  };
+
+  const formatPrice = (value: string | number) => {
+    const str = (+`${value}`).toFixed(2).replace('.', ',');
+    if (str.length <= 6) {
+        return str;
+    }
+    const index = str.length - 6;
+    const thousands = str.substring(0, index);
+    const remainder = str.substring(index);
+
+    return `${thousands}.${remainder}`;
   };
 
   useEffect(() => {
@@ -29,11 +46,12 @@ const Details = () => {
 
   return (
     <UserTemplate>
+      { isLoadingDetailsProducts && <DetailsLoading /> }
       <h1 className="text-[24px] font-bold mt-10">{product.name}</h1>
       <div className="flex gap-4 mt-8 mb-14">
         <div className="flex-1 bg-white items-center justify-center rounded-md">
           <Carousel showThumbs={false} emulateTouch={true} className="p-10 min-w-[400px]">
-            <div>
+            <div >
               <img src={product.url1} alt={`Imagem 1 do produto ${product.name}`} />
             </div>
             <div>
@@ -51,7 +69,7 @@ const Details = () => {
           </div>
           <div className="bg-white w-full h-full px-6 p-4 rounded-md flex flex-col justify-center items-center">
             <small className="self-start">Preço</small>
-            <p className="flex justify-center items-center text-[32px] font-medium">R$ {product.price}</p>
+            <p className="flex justify-center items-center text-[32px] font-medium">R$ {formatPrice(product.price)}</p>
           </div>
         </div>
       </div>
