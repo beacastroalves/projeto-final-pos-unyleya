@@ -29,7 +29,7 @@ const App = () => {
       element: <ListAllProducts />
     },
     {
-      path: "/products/details",
+      path: "/products/details/:id",
       element: <Details />
     },
     {

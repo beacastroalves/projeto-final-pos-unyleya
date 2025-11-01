@@ -1,5 +1,5 @@
 import AdminTemplate from "../../templates/admin-template";
-import CardProduct from "../../components/card-product";
+// import CardProduct from "../../components/card-product";
 
 import { LuGamepad2 } from "react-icons/lu";
 import { AiOutlineCar, AiOutlineGift, AiOutlineSync } from "react-icons/ai";
@@ -80,10 +80,10 @@ const Dashboard = () => {
 
       <h2 className="mt-12">Itens recentes</h2>
       <div className="flex flex-wrap justify-between">
+        {/* <CardProduct />
         <CardProduct />
         <CardProduct />
-        <CardProduct />
-        <CardProduct />
+        <CardProduct /> */}
       </div>
       <p className="flex self-end">Ver mais</p>
 
@@ -101,10 +101,10 @@ const Dashboard = () => {
 
       <h2>Anúncios</h2>
       <div className="flex flex-wrap justify-between">
+        {/* <CardProduct />
         <CardProduct />
         <CardProduct />
-        <CardProduct />
-        <CardProduct />
+        <CardProduct /> */}
       </div>
       <p className="flex self-end">Ver mais</p>
     </AdminTemplate>

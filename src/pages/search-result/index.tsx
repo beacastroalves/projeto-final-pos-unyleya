@@ -40,6 +40,7 @@ const SearchProducts = () => {
           allProducts.map((product) => (
             <CardProduct
               key={product._id}
+              id={product._id}
               price={product.price}
               name={product.name}
               manufacturer={product.manufacturer}

@@ -18,7 +18,7 @@ const CardProduct = (props: CardProps) => {
   const navigate = useNavigate();
 
   return (
-    <button onClick={() => navigate("/products/details")} className="flex flex-col items-center justify-between p-6 my-4 mx-2 shadow-md rounded-md h-[400px] w-[230px] border-2 border-gray-50 bg-white cursor-pointer">
+    <button onClick={() => navigate(`/products/details/${props.id}`)} className="flex flex-col items-center justify-between p-6 my-4 mx-2 shadow-md rounded-md h-[400px] w-[230px] border-2 border-gray-50 bg-white cursor-pointer">
       <h1 className="text-[16px] font-bold mb-1 w-full text-left">{props.name}</h1>
 
       <img className="max-h-[150px] my-3" src={props.img} alt={`imagem meramente ilustrativa de um ${props.name}`} />

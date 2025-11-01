@@ -83,6 +83,7 @@ const ListAllProducts = () => {
           allProducts.map((product) => (
             <CardProduct
               key={product._id}
+              id={product._id}
               name={product.name}
               manufacturer={product.manufacturer}
               img={product.url1}
