@@ -13,6 +13,7 @@ import UserProducts from "./pages/user-products";
 import FormProduct from "./pages/form-product";
 import ContactUs from "./pages/contact-us";
 import ListAllProducts from "./pages/list-all-products";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -77,6 +78,7 @@ const App = () => {
   return (
     <div>
       <RouterProvider router={router}/>
+      <ToastContainer />
       {/* <UserTemplate>
         Hello
       </UserTemplate> */}

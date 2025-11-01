@@ -16,6 +16,7 @@ import { getApiRecentsProducts, getApiRecommendedsProducts } from "./services";
 import { useState, useEffect } from "react";
 import type { Product } from "./types";
 import ListLoading from "../../components/list-loading";
+import { toast } from "react-toastify";
 
 const itemsCategory = [
   {
@@ -74,7 +75,7 @@ const Home = () => {
 
       setRecentsProducts(response.data.slice(0, 4));
     } catch (error) {
-      alert(`Houve um erro ao buscar produtos recentes // ${error}`);
+      toast.error(`Houve um erro ao buscar produtos recentes | ${error}`);
     }
     setIsLoadingRecentsProducts(false);
   };
@@ -95,7 +96,7 @@ const Home = () => {
       const response = await getApiRecommendedsProducts();
       setRecommendedsProducts(response.data.slice(0, 4));
     } catch (error) {
-      alert(`Houve um erro ao buscar produtos recomendados // ${error}`);
+      toast.error(`Houve um erro ao buscar produtos recomendados | ${error}`);
     }
     setIsLoadingRecommendedsProducts(false);
   };

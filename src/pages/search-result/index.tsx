@@ -5,6 +5,7 @@ import { getApiProductsByNames } from "./services";
 import { useEffect, useState } from "react";
 import type { Product } from "./types";
 import ListLoading from "../../components/list-loading";
+import { toast } from "react-toastify";
 
 const SearchProducts = () => {
 
@@ -21,7 +22,7 @@ const SearchProducts = () => {
     const response = await getApiProductsByNames(nameProduct ?? "");
     setAllProducts(response.data);
     } catch (error) {
-      alert(`Houve um erro ao buscar todos os produtos recentes | ${error}`);
+      toast.error(`Houve um erro ao buscar todos os produtos | ${error}`);
     }
     setIsLoadingProducts(false);
   };

@@ -5,6 +5,7 @@ import { getApiProductsById } from "./services";
 import { useEffect, useState } from "react";
 import type { Product } from "./types";
 import DetailsLoading from "../../components/details-loading";
+import { toast } from "react-toastify";
 
 const Details = () => {
   const params = useParams();
@@ -20,10 +21,8 @@ const Details = () => {
       const response = await getApiProductsById(id ?? "");
 
       setProduct(response.data);
-      console.log(response.data);
-      console.log(product);
     } catch (error) {
-      alert(`Erro ao buscar dados do produto | ${error}`);
+      toast.error(`Erro ao buscar dados do produto | ${error}`)
     }
     setIsLoadingDetailsProducts(false);
   };

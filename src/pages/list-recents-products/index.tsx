@@ -4,6 +4,7 @@ import UserTemplate from "../../templates/user-template";
 import { getApiAllProductsRecents } from "./service";
 import type { Product } from "./types";
 import ListLoading from "../../components/list-loading";
+import { toast } from "react-toastify";
 
 const ListRecentsProducts = () => {
 
@@ -18,7 +19,7 @@ const ListRecentsProducts = () => {
 
       setAllProducts(response.data);
     } catch (error) {
-      alert(`Houve um erro ao buscar todos os produtos recentes / ${error}`)
+      toast.error(`Houve um erro ao buscar todos os produtos recentes | ${error}`);
     }
     setIsLoadingRecents(false);
   };

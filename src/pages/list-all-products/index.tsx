@@ -6,6 +6,7 @@ import type { Product } from "./types";
 import ListLoading from "../../components/list-loading";
 import { useNavigate } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 const ListAllProducts = () => {
 
@@ -23,7 +24,7 @@ const ListAllProducts = () => {
 
       setAllProducts(response.data);
     } catch (error) {
-      alert(`Houve um erro ao buscar todos os produtos recentes / ${error}`)
+      toast.error(`Houve um erro ao buscar todos os produtos recentes | ${error}`);
     }
     setIsLoadingRecents(false);
   };
@@ -36,7 +37,7 @@ const ListAllProducts = () => {
 
       setAllProducts(response.data);
     } catch (error) {
-      alert(`Houve um erro ao buscar todos os produtos recentes / ${error}`)
+      toast.error(`Houve um erro ao buscar todos os produtos | ${error}`);
     }
     setIsLoadingRecents(false);
   };
