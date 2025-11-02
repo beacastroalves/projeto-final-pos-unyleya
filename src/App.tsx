@@ -79,9 +79,6 @@ const App = () => {
     <div>
       <RouterProvider router={router}/>
       <ToastContainer />
-      {/* <UserTemplate>
-        Hello
-      </UserTemplate> */}
     </div>
   )
 };

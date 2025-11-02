@@ -3,15 +3,8 @@ import AuthTemplate from "../../templates/auth-template";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-type RegisterForm = {
-  name: string;
-  email: string;
-  phone: string;
-  city: string;
-  state: string;
-  password: string;
-};
+import type { RegisterForm } from "./types";
+import { registerUser } from "./services";
 
 const schemaValidation = Yup.object().shape({
   name: Yup.string().required("Campo obrigatório"),
@@ -33,10 +26,19 @@ const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<RegisterForm>({ resolver: yupResolver(schemaValidation) });
 
-  const createUser = (values: RegisterForm) => {
+  const createUser = async (values: RegisterForm) => {
+    try {
+      const response = await registerUser(values);
+      console.log(response.data);
+      reset();
+      alert("Usuario cadastrado com sucesso!");
+    } catch (error) {
+      alert(`Não foi possível fazer login. Tente novamente | ${error}`);
+    }
     console.log(values);
   };
 
