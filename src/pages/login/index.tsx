@@ -3,6 +3,7 @@ import AuthTemplate from "../../templates/auth-template";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
+import { auth } from "./services";
 
 type LoginForm = {
   email: string;
@@ -28,8 +29,14 @@ const Login = () => {
     formState: { errors }
   } = useForm<LoginForm>({ resolver: yupResolver(schemaValidation) });
 
-  const logar = (values: LoginForm) => {
-    console.log(values);
+  const logar = async(values: LoginForm) => {
+    try {
+      const response = await auth(values.email, values.password);
+      navigate("/dashboard");
+      console.log(response);
+    } catch (error) {
+      alert(`Erro ao fazer login. Tente novamente. | ${error}`);
+    };
   };
 
   return (
