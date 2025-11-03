@@ -4,42 +4,50 @@ import AdminTemplate from "../../templates/admin-template";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-
-type FormProduct = {
-  name: string;
-  manufacturer: string;
-  category: string;
-  price: number;
-  url1: string;
-  url2: string;
-};
+import type { FormProductType } from "./types";
+import { saveApiProduct } from "./services";
+import { useAuthSessionStore } from "../../hooks/use-auth-session";
 
 const schemaValidation = Yup.object().shape({
   name: Yup.string().required("Campo obrigatório"),
   manufacturer: Yup.string().required("Campo obrigatório"),
   category: Yup.string().required("Campo obrigatório"),
-  price: Yup.number().required("Campo obrigatório"),
+  price: Yup.number().typeError("Campo obrigatório").required(),
   url1: Yup.string().required("Campo obrigatório"),
   url2: Yup.string().required("Campo obrigatório"),
+  description: Yup.string().min(20, "Mínimo de 20 caracteres"),
 });
 
 const FormProduct = () => {
-
   const navigate = useNavigate();
+
+  const { token } = useAuthSessionStore();
+
+  const saveProduct = async (values: FormProductType) => {
+    try {
+      await saveApiProduct({...values}, token);
+      alert("Produto cadastrado com sucesso!");
+      reset();
+    } catch (error) {
+      alert(`Erro ao cadastrar o produto, tente novamente.| ${error}`);
+    }
+  }
 
   const {
     register,
+    handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<FormProduct>({ resolver: yupResolver(schemaValidation) });
+  } = useForm({ resolver: yupResolver(schemaValidation) });
 
   return (
     <AdminTemplate>
       <h1 className="text-[20px] my-8 max-w-[900px] w-full px-12">Novo Produto</h1>
       <div className="max-w-[900px] bg-white py-8 px-16 rounded-lg shadow-lg w-full flex flex-col gap-4 self-center">
         <p className="py-4">Preencha todos os campos abaixo:</p>
-        <form className="">
+        <form onSubmit={handleSubmit(saveProduct)}>
           <div className="flex gap-4">
-            <div className="flex-1 w-full min-h-[70px] h-[70px]">
+            <div className="flex-1 w-full min-h-[72px] h-[70px]">
               <input
                 {...register("name")}
                 className="border-2 border-gray-200 w-full rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
@@ -50,7 +58,7 @@ const FormProduct = () => {
               )}
             </div>
 
-            <div className="flex-1 w-full min-h-[70px] h-[70px]">
+            <div className="flex-1 w-full min-h-[72px] h-[70px]">
               <input
                 {...register("manufacturer")}
                 className="border-2 border-gray-200 w-full rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
@@ -63,7 +71,7 @@ const FormProduct = () => {
           </div>
 
           <div className="flex gap-4">
-            <div className="flex-1 w-full min-h-[70px] h-[70px]">
+            <div className="flex-1 w-full min-h-[72px] h-[70px]">
               <select
                 {...register("category")}
                 className="border-2 border-gray-200 w-full rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
@@ -82,9 +90,10 @@ const FormProduct = () => {
               )}
             </div>
 
-            <div className="flex-1 w-full min-h-[70px] h-[70px]">
+            <div className="flex-1 w-full min-h-[72px] h-[70px]">
               <input
                 {...register("price")}
+                type="number"
                 className="border-2 border-gray-200 w-full rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
                 placeholder="Preço do Produto"
               />
@@ -95,7 +104,7 @@ const FormProduct = () => {
           </div>
 
           <div className="flex gap-4">
-            <div className="flex-1 w-full min-h-[70px] h-[70px]">
+            <div className="flex-1 w-full min-h-[72px] h-[70px]">
               <input
                 {...register("url1")}
                 className="border-2 border-gray-200 w-full rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
@@ -106,7 +115,7 @@ const FormProduct = () => {
               )}
             </div>
 
-            <div className="flex-1 w-full min-h-[70px] h-[70px]">
+            <div className="flex-1 w-full min-h-[72px] h-[70px]">
               <input
                 {...register("url2")}
                 className="border-2 border-gray-200 w-full rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
@@ -118,8 +127,15 @@ const FormProduct = () => {
             </div>
           </div>
 
-          <div className="flex-1 w-full min-h-[70px] h-[350px] ">
-            <textarea className="outline-gray-300 w-full min-h-[100%] border-2 border-gray-200 rounded-lg p-4 shadow-sm" ></textarea>
+          <div className="flex-1 w-full min-h-[72px] h-[350px] ">
+            <textarea
+              {...register("description")}
+              className="outline-gray-300 w-full min-h-[100%] border-2 border-gray-200 rounded-lg p-4 shadow-sm" 
+              placeholder="Escreva aqui a descrição do produto"
+              />
+              { errors.description && (
+                <span className="text-red-700 text-[12px] ml-2">{ errors.description.message }</span>
+              )}
           </div>
           <div className="flex gap-4 justify-end">
             <button

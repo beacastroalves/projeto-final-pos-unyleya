@@ -34,7 +34,7 @@ const UserProducts = () => {
           <h1 className="text-[20px]">Anuncios</h1>
           <button onClick={() => navigate('/form-product')} className="bg-secondary text-white px-8 py-2 rounded-md cursor-pointer transition duration-300 hover:drop-shadow-md hover:brightness-105 active:brightness-98 active:translate-[1px] active:drop-shadow-lg">Adicionar</button>
         </div>
-        <div className="flex flex-wrap justify-between mt-8 w-full">
+        <div className="flex flex-wrap mt-8 w-full">
           {
             myProducts.map((product) => (
               <CardProductAdmin

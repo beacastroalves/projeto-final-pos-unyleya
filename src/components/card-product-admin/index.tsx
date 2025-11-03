@@ -42,16 +42,16 @@ const CardProductAdmin = (props: CardProps) => {
 
   return (
     <div>
-      <button
+      <div
       // onClick={() => navigate("/products/details")}
-        className="flex flex-col gap-2 justify-center items-center px-6 py-8 my-4 mx-2 shadow-md rounded-md h-fit w-fit min-w-[220px] border-2 border-gray-50 bg-white cursor-pointer"
+        className="flex flex-col items-center justify-between p-6 my-4 mx-2 shadow-md rounded-md h-[400px] w-[230px] border-2 border-gray-50 bg-white cursor-pointer"
       >
         <h1 className="text-[16px] font-bold mb-1 w-full text-left">{props.name}</h1>
-        <img className="w-[150px] my-3" src={props.img} alt={`Imagem do produto: ${props.name}`} />
+        <img className="max-h-[150px] my-3" src={props.img} alt={`Imagem do produto: ${props.name}`} />
         <div className="flex flex-row justify-between items-center w-full">
-          <div className="flex flex-col justify-between">
-            <p className="w-full mt-3 text-[14px] text-left">{props.manufacturer}</p>
-            <p className="w-full text-[20px] text-left">R$ {formatPrice(props.price)}</p>
+          <div className="self-start">
+            <p className="w-full mt-3 text-[14px] text-left mb-1">{props.manufacturer}</p>
+            <p className="w-full text-[24px] text-left">R$ {formatPrice(props.price)}</p>
           </div>
           <div className="flex flex-col items-center gap-1 mt-2 text-[18px]">
             <button onClick={() => navigate("/form-product")} className="cursor-pointer p-1 transition duration-200 hover:text-primary hover:scale-150" title="Editar Produto">
@@ -62,7 +62,7 @@ const CardProductAdmin = (props: CardProps) => {
             </button>
           </div>
         </div>
-      </button>
+      </div>
        <Modal
         isOpen={modalIsOpen}
         onRequestClose={()=>setIsOpen(false)}
