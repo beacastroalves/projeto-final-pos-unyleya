@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { auth } from "./services";
+import { useAuthSessionStore } from "../../hooks/use-auth-session";
 
 type LoginForm = {
   email: string;
@@ -20,7 +21,7 @@ const schemaValidation = Yup.object().shape({
 });
 
 const Login = () => {
-
+  const { setToken } = useAuthSessionStore();
   const navigate = useNavigate();
 
   const {
@@ -32,8 +33,8 @@ const Login = () => {
   const logar = async(values: LoginForm) => {
     try {
       const response = await auth(values.email, values.password);
+      setToken(response.data?.token);
       navigate("/dashboard");
-      console.log(response);
     } catch (error) {
       alert(`Erro ao fazer login. Tente novamente. | ${error}`);
     };
