@@ -37,7 +37,7 @@ const HeaderAdmin = () => {
         </li>
         <li>
           <button
-            onClick={() => navigate('#')}
+            onClick={() => navigate('/my-products')}
             className="bg-white text-secondary px-8 py-2 ml-2 rounded-md cursor-pointer transition duration-300 hover:drop-shadow-md hover:text-secondary-300 active:text-secondary-600 active:translate-[1px] active:drop-shadow-lg"
           >
             Anunciar
