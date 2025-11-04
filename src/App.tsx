@@ -14,6 +14,7 @@ import FormProduct from "./pages/form-product";
 import ContactUs from "./pages/contact-us";
 import ListAllProducts from "./pages/list-all-products";
 import { ToastContainer } from "react-toastify";
+import FormProductEdit from "./pages/form-product-edit";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -68,6 +69,10 @@ const App = () => {
     {
       path: "/form-product",
       element: <FormProduct />
+    },
+    {
+      path: "/form-product-edit/:id",
+      element: <FormProductEdit />
     },
     {
       path: "*",

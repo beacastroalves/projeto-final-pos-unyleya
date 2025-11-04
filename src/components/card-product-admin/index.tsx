@@ -70,7 +70,7 @@ const CardProductAdmin = (props: CardProps) => {
             <p className="w-full text-[24px] text-left">R$ {formatPrice(props.price)}</p>
           </div>
           <div className="flex flex-col items-center gap-1 mt-2 text-[18px]">
-            <button onClick={() => navigate("/form-product")} className="cursor-pointer p-1 transition duration-200 hover:text-primary hover:scale-150" title="Editar Produto">
+            <button onClick={() => navigate(`/form-product-edit/${props.id}`)} className="cursor-pointer p-1 transition duration-200 hover:text-primary hover:scale-150" title="Editar Produto">
               <BiEditAlt />
             </button>
             <button onClick={() => setIsOpen(true)} className="cursor-pointer p-1 transition duration-200 hover:text-red-700 hover:scale-150" title="Deletar Produto">
