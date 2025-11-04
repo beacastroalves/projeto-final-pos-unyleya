@@ -48,18 +48,18 @@ const Details = () => {
       { isLoadingDetailsProducts && <DetailsLoading /> }
       <h1 className="text-[24px] font-bold mt-10">{product.name}</h1>
       <div className="flex gap-4 mt-8 mb-14">
-        <div className="flex-1 bg-white items-center justify-center rounded-md">
-          <Carousel showThumbs={false} emulateTouch={true} className="p-10 min-w-[400px]">
-            <div >
-              <img src={product.url1} alt={`Imagem 1 do produto ${product.name}`} />
+        <div className="flex-1 bg-white flex items-center justify-center rounded-md p-16 max-w-[500px] max-h-[500px]">
+          <Carousel showThumbs={false} emulateTouch={true} className="flex items-center justify-center w-full">
+            <div className="w-fit">
+              <img className="w-full" src={product.url1} alt={`Imagem 1 do produto ${product.name}`} />
             </div>
-            <div>
-              <img src={product.url2} alt={`Imagem 1 do produto ${product.name}`} />
+            <div className="w-fit">
+              <img className="w-full" src={product.url2} alt={`Imagem 1 do produto ${product.name}`} />
             </div>
           </Carousel>
         </div>
         <div className="flex flex-col gap-4 flex-1">
-          <div className="bg-white w-full px-6 p-4 rounded-md">
+          <div className="bg-white w-full px-6 p-4 rounded-md min-h-[300px]">
             <h3 className="font-bold text-[16px] mb-4">Informações do Vendedor</h3>
             <p className="mb-2">#Nome do vendedor</p>
             <p className="mb-2">#Localidade do vendedor</p>

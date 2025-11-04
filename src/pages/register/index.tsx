@@ -8,13 +8,14 @@ import { registerUser } from "./services";
 import { toast } from "react-toastify";
 
 const schemaValidation = Yup.object().shape({
-  name: Yup.string().required("Campo obrigatório"),
+  name: Yup.string().required("Campo obrigatório").min(2, "Mínimo de 2 caracteres"),
   email: Yup.string()
+    .required("Campo obrigatório")
     .email("Digite um e-mail válido")
-    .required("Campo obrigatório"),
-  phone: Yup.string().required("Campo obrigatório"),
-  city: Yup.string().required("Campo obrigatório"),
-  state: Yup.string().required("Campo obrigatório"),
+    .min(8, "Mínimo de 8 caracteres"),
+  phone: Yup.string().required("Campo obrigatório").min(14, "Mínimo de 14 caracteres"),
+  city: Yup.string().required("Campo obrigatório").min(2, "Mínimo de 2 caracteres"),
+  state: Yup.string().required("Campo obrigatório").min(2, "Mínimo de 2 caracteres"),
   password: Yup.string()
     .required("Campo obrigatório")
     .min(4, "Mínimo de 4 caracteres")
@@ -82,7 +83,7 @@ const Register = () => {
               {...register('phone')}
               className="border-2 border-gray-200 rounded-lg py-2 px-4 outline-gray-400 shadow-sm"
               type="tel"
-              placeholder="Telefone"
+              placeholder="Telefone (DDD) _____-____"
             />
             { errors.phone && (
               <span className="text-red-700 text-[12px] ml-2">{ errors.phone.message }</span>

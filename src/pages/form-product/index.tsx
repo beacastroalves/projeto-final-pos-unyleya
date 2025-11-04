@@ -10,13 +10,13 @@ import { useAuthSessionStore } from "../../hooks/use-auth-session";
 import { toast } from "react-toastify";
 
 const schemaValidation = Yup.object().shape({
-  name: Yup.string().required("Campo obrigatório"),
+  name: Yup.string().required("Campo obrigatório").min(10, "Mínimo de 10 caracteres"),
   manufacturer: Yup.string().required("Campo obrigatório"),
   category: Yup.string().required("Campo obrigatório"),
   price: Yup.number().typeError("Campo obrigatório").required(),
   url1: Yup.string().required("Campo obrigatório"),
   url2: Yup.string().required("Campo obrigatório"),
-  description: Yup.string().min(20, "Mínimo de 20 caracteres"),
+  description: Yup.string().min(25, "Mínimo de 25 caracteres"),
 });
 
 const FormProduct = () => {
