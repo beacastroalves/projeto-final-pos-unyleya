@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import type { RegisterForm } from "./types";
 import { registerUser } from "./services";
+import { toast } from "react-toastify";
 
 const schemaValidation = Yup.object().shape({
   name: Yup.string().required("Campo obrigatório"),
@@ -35,9 +36,9 @@ const Register = () => {
       const response = await registerUser(values);
       console.log(response.data);
       reset();
-      alert("Usuario cadastrado com sucesso!");
+      toast.success("Usuario cadastrado com sucesso!");
     } catch (error) {
-      alert(`Não foi possível fazer login. Tente novamente | ${error}`);
+      toast.error(`Não foi possível fazer login. Tente novamente | ${error}`);
     }
     console.log(values);
   };

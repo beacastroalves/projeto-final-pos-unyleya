@@ -36,7 +36,7 @@ const Login = () => {
       setToken(response.data?.token);
       navigate("/dashboard");
     } catch (error) {
-      alert(`Erro ao fazer login. Tente novamente. | ${error}`);
+      toast.error(`Erro ao fazer login. Tente novamente. | ${error}`);
     };
   };
 

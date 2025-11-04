@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import type { FormProductType } from "./types";
 import { saveApiProduct } from "./services";
 import { useAuthSessionStore } from "../../hooks/use-auth-session";
+import { toast } from "react-toastify";
 
 const schemaValidation = Yup.object().shape({
   name: Yup.string().required("Campo obrigatório"),
@@ -26,10 +27,10 @@ const FormProduct = () => {
   const saveProduct = async (values: FormProductType) => {
     try {
       await saveApiProduct({...values}, token);
-      alert("Produto cadastrado com sucesso!");
+      toast.success("Produto cadastrado com sucesso!");
       reset();
     } catch (error) {
-      alert(`Erro ao cadastrar o produto, tente novamente.| ${error}`);
+      toast.error(`Erro ao cadastrar o produto, tente novamente.| ${error}`);
     }
   }
 

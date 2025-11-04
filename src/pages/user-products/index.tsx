@@ -5,6 +5,7 @@ import { getApiMyProducts } from "./services";
 import { useAuthSessionStore } from "../../hooks/use-auth-session";
 import { useEffect, useState } from "react";
 import type { Product } from "./types";
+import { toast } from "react-toastify";
 
 const UserProducts = () => {
 
@@ -19,7 +20,7 @@ const UserProducts = () => {
       const response = await getApiMyProducts(token);
       setMyProducts(response.data);
     } catch (error) {
-      alert(`Erro ao buscar produtos do usuário | ${error}`);
+      toast.error(`Erro ao buscar produtos do usuário | ${error}`);
     }
   }
 
