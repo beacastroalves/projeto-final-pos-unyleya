@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import Modal from 'react-modal';
 import { useState } from "react";
 import type { CardProps } from "./types";
+import { deleteApiProduct } from "./services";
+import { toast } from "react-toastify";
+import { getApiMyProducts } from "../../pages/user-products/services";
+import { useAuthSessionStore } from "../../hooks/use-auth-session";
 
 const formatPrice = (value: string | number) => {
   const str = (+`${value}`).toFixed(2).replace('.', ',');
@@ -35,15 +39,27 @@ const customStyles = {
 Modal.setAppElement('#root')
 
 const CardProductAdmin = (props: CardProps) => {
-
+  const { token } = useAuthSessionStore();
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
 
+  const deleteProduct = async () => {
+    try {
+      await deleteApiProduct(props.id, token);
+      const response = await getApiMyProducts(token);
+      props.setMyProducts(response.data);
+      setIsOpen(false);
+      toast.success(`Produto ${props.name} deletado com sucesso`);
+    } catch (error) {
+      toast.error(`Erro ao deletar o produto | ${error}`)
+    }
+  }
+
   return (
     <div>
       <div
-        onClick={() => navigate(`/products/details/${props.id}`)}
+        // onClick={() => navigate(`/products/details/${props.id}`)}
         className="flex flex-col items-center justify-between p-6 my-4 mx-2 shadow-md rounded-md h-[400px] w-[230px] border-2 border-gray-50 bg-white cursor-pointer"
       >
         <h1 className="text-[16px] font-bold mb-1 w-full text-left">{props.name}</h1>
@@ -72,7 +88,12 @@ const CardProductAdmin = (props: CardProps) => {
         <p className="font-bold text-center text-[18px] mt-4 my-2 px-32 select-none">Excluir Produto</p>
         <p className="text-center my-4 select-none">Deseja realmente excluir o item?</p>
         <div className="flex items-center justify-center gap-4 mb-2 select-none">
-          <button className="cursor-pointer bg-primary text-white border-2 border-primary rounded-lg py-2 px-10 my-2 transition duration-300 hover:bg-primary-300 active:bg-primary-600 active:translate-[1px]">Sim</button>
+          <button
+            onClick={deleteProduct}
+            className="cursor-pointer bg-primary text-white border-2 border-primary rounded-lg py-2 px-10 my-2 transition duration-300 hover:bg-primary-300 active:bg-primary-600 active:translate-[1px]"
+          >
+            Sim
+          </button>
           <button onClick={() => setIsOpen(false)} className="cursor-pointer text-primary border-2 border-primary rounded-lg py-2 px-10 my-2 transition duration-300 hover:bg-primary/10 active:bg-primary/20 active:translate-[1px]">Não</button>
         </div>
       </Modal>

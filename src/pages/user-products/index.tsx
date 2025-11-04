@@ -45,6 +45,7 @@ const UserProducts = () => {
                 img={product.url1}
                 manufacturer={product.manufacturer}
                 price={product.price}
+                setMyProducts={setMyProducts}
               />
             ))
           }

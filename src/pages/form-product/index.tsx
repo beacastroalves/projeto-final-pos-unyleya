@@ -27,6 +27,7 @@ const FormProduct = () => {
   const saveProduct = async (values: FormProductType) => {
     try {
       await saveApiProduct({...values}, token);
+      navigate("/my-products");
       toast.success("Produto cadastrado com sucesso!");
       reset();
     } catch (error) {
