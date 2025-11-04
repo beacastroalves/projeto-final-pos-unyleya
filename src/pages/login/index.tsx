@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { auth } from "./services";
 import { useAuthSessionStore } from "../../hooks/use-auth-session";
+import { toast } from "react-toastify";
 
 type LoginForm = {
   email: string;
