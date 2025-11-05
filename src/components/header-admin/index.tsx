@@ -1,8 +1,33 @@
 import { Link, useNavigate } from "react-router-dom";
+import Modal from 'react-modal';
+import { useState } from "react";
+import { useAuthSessionStore } from "../../hooks/use-auth-session";
+
+const customStyles = {
+  overlay: {
+    background: 'rgba(0,0,0,0.6)',
+  },
+  content: {
+    top: '28%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    borderRadius: '10px',
+  },
+}
 
 const HeaderAdmin = () => {
-
+  const { clearToken } = useAuthSessionStore();
   const navigate = useNavigate();
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const logout = async() => {
+    clearToken();
+    navigate("/");
+  }
 
   return (
     <div className="bg-primary flex justify-between items-center py-4 px-3">
@@ -28,12 +53,12 @@ const HeaderAdmin = () => {
           </Link>
         </li>
         <li>
-          <Link
-            to="/"
+          <button
+            onClick={() => setIsOpen(true)}
             className="cursor-pointer py-2 px-3 rounded-md border-b-2 border-t-2 border-transparent hover:border-white/50 hover:shadow-lg active:translate-[1px] active:drop-shadow-lg active:shadow-lg"
           >
             Sair
-          </Link>
+          </button>
         </li>
         <li>
           <button
@@ -44,6 +69,25 @@ const HeaderAdmin = () => {
           </button>
         </li>
       </ul>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={()=>setIsOpen(false)}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <p className="font-bold text-center text-[18px] mt-4 my-2 px-32 select-none">Confirmar logout</p>
+        <p className="text-center my-4 select-none">Deseja realmente sair?</p>
+        <div className="flex items-center justify-center gap-4 mb-2 select-none">
+          <button
+            onClick={logout}
+            className="cursor-pointer bg-primary text-white border-2 border-primary rounded-lg py-2 px-10 my-2 transition duration-300 hover:bg-primary-300 active:bg-primary-600 active:translate-[1px]"
+          >
+            Sim
+          </button>
+          <button onClick={() => setIsOpen(false)} className="cursor-pointer text-primary border-2 border-primary rounded-lg py-2 px-10 my-2 transition duration-300 hover:bg-primary/10 active:bg-primary/20 active:translate-[1px]">Não</button>
+        </div>
+      </Modal>
     </div>
   )
 };

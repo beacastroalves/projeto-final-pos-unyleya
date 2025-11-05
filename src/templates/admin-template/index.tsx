@@ -1,13 +1,22 @@
 import { useEffect, type PropsWithChildren } from "react"
 import Footer from "../../components/footer";
 import HeaderAdmin from "../../components/header-admin";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuthSessionStore } from "../../hooks/use-auth-session";
 
 type AdminTemplateProps = PropsWithChildren & {};
 
 const AdminTemplate = (props: AdminTemplateProps) => {
 
+  const { token } = useAuthSessionStore();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!token) {
+      navigate("/");
+    }
+  },[]);
 
   useEffect(()=> {
     window.scrollTo(0, 0)

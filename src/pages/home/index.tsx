@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 import type { Product } from "./types";
 import ListLoading from "../../components/list-loading";
 import { toast } from "react-toastify";
+import { useAuthSessionStore } from "../../hooks/use-auth-session";
 
 const itemsCategory = [
   {
@@ -57,6 +58,15 @@ const itemsCategory = [
 ];
 
 const Home = () => {
+
+  const { token } = useAuthSessionStore();
+
+  useEffect(() => {
+    if(token) {
+      navigate("/dashboard");
+      // console.log("a");
+    }
+  },[]);
 
   const navigate = useNavigate();
 
