@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import type { Product } from "./types";
 import DetailsLoading from "../../components/details-loading";
 import { toast } from "react-toastify";
+import { formatPrice } from "../../utils/format-price";
 
 const Details = () => {
   const params = useParams();
@@ -25,18 +26,6 @@ const Details = () => {
       toast.error(`Erro ao buscar dados do produto | ${error}`)
     }
     setIsLoadingDetailsProducts(false);
-  };
-
-  const formatPrice = (value: string | number) => {
-    const str = (+`${value}`).toFixed(2).replace('.', ',');
-    if (str.length <= 6) {
-        return str;
-    }
-    const index = str.length - 6;
-    const thousands = str.substring(0, index);
-    const remainder = str.substring(index);
-
-    return `${thousands}.${remainder}`;
   };
 
   useEffect(() => {
@@ -61,14 +50,14 @@ const Details = () => {
         <div className="flex flex-col gap-4 flex-1">
           <div className="bg-white w-full px-6 p-4 rounded-md min-h-[300px]">
             <h3 className="font-bold text-[16px] mb-4">Informações do Vendedor</h3>
-            <p className="mb-2">#Nome do vendedor</p>
-            <p className="mb-2">#Localidade do vendedor</p>
-            <p className="mb-2">Email: <span>#email@email.com</span></p>
-            <p className="mb-2">Telefone: <span>#(85) 99123-4567</span></p>
+            <p className="mb-2">{product.user?.name || "-"}</p>
+            <p className="mb-2">{product.user?.city} - {product.user?.state}</p>
+            <p className="mb-2">Email: <span>{product.user?.email}</span></p>
+            <p className="mb-2">Telefone: <span>{product.user?.phone}</span></p>
           </div>
           <div className="bg-white w-full h-full px-6 p-4 rounded-md flex flex-col justify-center items-center">
             <small className="self-start">Preço</small>
-            <p className="flex justify-center items-center text-[32px] font-medium">R$ {formatPrice(product.price)}</p>
+            <p className="flex justify-center items-center text-[32px] font-medium">{formatPrice(product.price)}</p>
           </div>
         </div>
       </div>

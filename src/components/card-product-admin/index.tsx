@@ -8,18 +8,7 @@ import { deleteApiProduct } from "./services";
 import { toast } from "react-toastify";
 import { getApiMyProducts } from "../../pages/user-products/services";
 import { useAuthSessionStore } from "../../hooks/use-auth-session";
-
-const formatPrice = (value: string | number) => {
-  const str = (+`${value}`).toFixed(2).replace('.', ',');
-  if (str.length <= 6) {
-      return str;
-  }
-  const index = str.length - 6;
-  const thousands = str.substring(0, index);
-  const remainder = str.substring(index);
-
-  return `${thousands}.${remainder}`;
-};
+import { formatPrice } from "../../utils/format-price";
 
 const customStyles = {
   overlay: {
@@ -67,7 +56,7 @@ const CardProductAdmin = (props: CardProps) => {
         <div className="flex flex-row justify-between items-center w-full">
           <div className="self-start">
             <p className="w-full mt-3 text-[14px] text-left mb-1">{props.manufacturer}</p>
-            <p className="w-full text-[24px] text-left">R$ {formatPrice(props.price)}</p>
+            <p className="w-full text-[24px] text-left">{formatPrice(props.price)}</p>
           </div>
           <div className="flex flex-col items-center gap-1 mt-2 text-[18px]">
             <button onClick={() => navigate(`/form-product-edit/${props.id}`)} className="cursor-pointer p-1 transition duration-200 hover:text-primary hover:scale-150" title="Editar Produto">

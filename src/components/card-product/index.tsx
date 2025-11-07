@@ -1,17 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import type { CardProps } from './types';
-
-const formatPrice = (value: string | number) => {
-  const str = (+`${value}`).toFixed(2).replace('.', ',');
-  if (str.length <= 6) {
-      return str;
-  }
-  const index = str.length - 6;
-  const thousands = str.substring(0, index);
-  const remainder = str.substring(index);
-
-  return `${thousands}.${remainder}`;
-};
+import { formatPrice } from "../../utils/format-price";
 
 const CardProduct = (props: CardProps) => {
 
@@ -24,7 +13,7 @@ const CardProduct = (props: CardProps) => {
       <img className="max-h-[150px] my-3" src={props.img} alt={`imagem meramente ilustrativa de um ${props.name}`} />
       <div className="self-start">
         <p className="w-full mt-3 text-[14px] text-left mb-1">{props.manufacturer}</p>
-        <p className="w-full text-[24px] text-left">R$ {formatPrice(props.price)}</p>
+        <p className="w-full text-[24px] text-left">{formatPrice(props.price)}</p>
       </div>
     </button>
   )
